@@ -1,0 +1,51 @@
+.hitem__container {
+  display: flex;
+  justify-content: space-between;
+  border: none;
+  background-color: rgb(225, 225, 225);
+  border-radius: 4px;
+  padding: 0.25rem 0;
+  margin-bottom: 0.5rem;
+  font-size: small;
+  font-weight: bold;
+}
+
+.title__container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.4rem;
+}
+
+.delete__button {
+  margin-left: 0.5rem;
+  color: rgb(200, 53, 37);
+}
+
+.delete__button:hover {
+  cursor: pointer;
+}
+
+.hitem__container p,
+.delete__button {
+  width: fit-content;
+  height: 1.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.hitem__sum_expense,
+.hitem__sum_income {
+  padding-right: 0.35rem;
+}
+
+/* .hitem__title {
+  padding-left: 0.3rem;
+} */
+
+.hitem__sum_expense {
+  border-right: 4px solid #db7063;
+}
+
+.hitem__sum_income {
+  border-right: 4px solid #23bb23;
+}

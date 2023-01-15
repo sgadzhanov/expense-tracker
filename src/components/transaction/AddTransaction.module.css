@@ -1,0 +1,86 @@
+.transaction__title {
+  margin: 1.5rem 0;
+  border-bottom: 1px solid rgb(122, 120, 120);
+}
+
+.transaction__title h4 {
+  margin: 0;
+  margin-bottom: 0.3rem;
+}
+
+.transaction__button {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: rgb(122, 51, 188);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 15px;
+  font-family: serif;
+  letter-spacing: 0.03cm;
+  transition: all 0.2s;
+}
+
+.transaction__button:hover,
+.transaction__button:active {
+  background-color: rgb(83, 31, 132);
+  cursor: pointer;
+}
+
+.tamount__container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0 0.5rem 0;
+}
+
+label,
+.label__description {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+}
+
+.invalid__text,
+.invalid__amount {
+  border: 1px solid rgb(192, 111, 102);
+  outline: none;
+  margin-top: 0.2rem;
+  border-radius: 3px;
+  padding: 0.45rem;
+}
+
+.text__input,
+.amount__input {
+  padding: 0.4rem;
+  border: none;
+  outline: none;
+  margin-top: 0.2rem;
+  border-radius: 3px;
+}
+
+.disabled__button {
+  cursor:not-allowed;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: rgb(144 127 157);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 15px;
+  font-family: serif;
+  letter-spacing: 0.03cm;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.text__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.validation {
+  font-size: 12.5px;
+  color: rgb(234, 69, 69);
+  margin-top: 0.25rem;
+  font-weight: bold;
+}

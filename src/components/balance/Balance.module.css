@@ -1,0 +1,18 @@
+.balance__container {
+  text-align: center;
+}
+
+p {
+  margin: 0;
+}
+
+.balance {
+  font-size: 0.5em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.sum {
+  font-size: 1.75em;
+  font-weight: bold;
+}

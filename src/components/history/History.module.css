@@ -1,0 +1,13 @@
+.history__title {
+  border-bottom: 1px solid rgb(122, 120, 120);
+  margin: 2rem 0 1rem 0;
+}
+
+.empty__history {
+  margin: 0;
+}
+
+.history__title h4 {
+  margin: 0;
+  margin-bottom: 0.3rem;
+}
