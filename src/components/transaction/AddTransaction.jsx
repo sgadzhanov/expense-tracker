@@ -66,7 +66,6 @@ const AddTransaction = () => {
           value={amountInput}
           onChange={amountChangeHandler}
           onBlur={() => setAmountIsBlur(true)}
-          type='number'
           placeholder='Enter amount...'
         />
         {!amountInputIsValid && amountIsBlur &&
@@ -74,7 +73,6 @@ const AddTransaction = () => {
         }
       </div>
       <button
-        // disabled={!isValidForm}
         className={isValidForm ? classes.transaction__button : classes.disabled__button}>
         Add Transaction
       </button>
