@@ -1,16 +1,27 @@
 import { useState, useContext } from 'react';
+import { useTransaction } from '../../assets/hooks/useTransaction';
 import { CartContext } from '../../context/cart-context';
 
 import classes from './AddTransaction.module.css';
 
 const AddTransaction = () => {
-  const [textInput, setTextInput] = useState('');
-  const [textIsBlur, setTextIsBlur] = useState(false);
-  const [amountInput, setAmountInput] = useState('');
-  const [amountIsBlur, setAmountIsBlur] = useState(false);
+  const {
+    enteredInput: textInput,
+    inputIsBlur: textIsBlur,
+    isValidInput: textInputIsValid,
+    inputChangeHandler: textChangeHandler,
+    inputBlurHandler: textBlurHandler,
+    clearInput: clearText,
+  } = useTransaction((input) => input.trim().length > 0);
 
-  const textInputIsValid = textInput.trim().length !== 0;
-  const amountInputIsValid = amountInput.trim().length !== 0 && amountInput.trim() !== '0';
+  const {
+    enteredInput: amountInput,
+    inputIsBlur: amountIsBlur,
+    isValidInput: amountInputIsValid,
+    inputChangeHandler: amountChangeHandler,
+    inputBlurHandler: amountBlurHandler,
+    clearInput: clearAmount,
+  } = useTransaction((amount) => amount.trim().length > 0 && +amount !== 0);
 
   const isValidForm = textInputIsValid && amountInputIsValid;
 
@@ -24,16 +35,9 @@ const AddTransaction = () => {
     }
 
     ctx.addTransaction({ text: textInput, amount: amountInput });
-    setTextIsBlur(false);
-    setAmountIsBlur(false);
-
-    setTextInput('');
-    setAmountInput('');
+    clearText();
+    clearAmount();
   };
-
-  const textChangeHandler = (e) => setTextInput(e.target.value);
-
-  const amountChangeHandler = (e) => setAmountInput(e.target.value);
 
   const textInputStyleClass = !textInputIsValid && textIsBlur ? classes.invalid__text : classes.text__input;
   const amountInputStyleClass = !amountInputIsValid && amountIsBlur ? classes.invalid__amount : classes.amount__input;
@@ -49,7 +53,7 @@ const AddTransaction = () => {
           className={textInputStyleClass}
           value={textInput}
           onChange={textChangeHandler}
-          onBlur={() => setTextIsBlur(true)}
+          onBlur={textBlurHandler}
           placeholder='Enter text...'
         />
         {!textInputIsValid && textIsBlur &&
@@ -65,7 +69,7 @@ const AddTransaction = () => {
           className={amountInputStyleClass}
           value={amountInput}
           onChange={amountChangeHandler}
-          onBlur={() => setAmountIsBlur(true)}
+          onBlur={amountBlurHandler}
           placeholder='Enter amount...'
         />
         {!amountInputIsValid && amountIsBlur &&
