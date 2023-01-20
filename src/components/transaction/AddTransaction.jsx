@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { useTransaction } from '../../assets/hooks/useTransaction';
 import { CartContext } from '../../context/cart-context';
 

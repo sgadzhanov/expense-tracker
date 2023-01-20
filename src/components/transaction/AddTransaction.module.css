@@ -16,7 +16,6 @@
   border: none;
   border-radius: 3px;
   font-size: 15px;
-  font-family: serif;
   letter-spacing: 0.03cm;
   transition: all 0.2s;
 }
@@ -67,7 +66,6 @@ label,
   border: none;
   border-radius: 3px;
   font-size: 15px;
-  font-family: serif;
   letter-spacing: 0.03cm;
   transition: all 0.2s;
   outline: none;
