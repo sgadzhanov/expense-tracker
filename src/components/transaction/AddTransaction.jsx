@@ -2,6 +2,11 @@ import { useContext } from 'react';
 import { useTransaction } from '../../assets/hooks/useTransaction';
 import { CartContext } from '../../context/cart-context';
 
+import Input from './Input';
+import InputValidation from './InputValidation';
+import Label from './Label';
+import BaseButton from '../../ui/BaseButton';
+
 import classes from './AddTransaction.module.css';
 
 const AddTransaction = () => {
@@ -25,7 +30,7 @@ const AddTransaction = () => {
 
   const isValidForm = textInputIsValid && amountInputIsValid;
 
-  const ctx = useContext(CartContext);
+  const transactionContext = useContext(CartContext);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -34,13 +39,10 @@ const AddTransaction = () => {
       return
     }
 
-    ctx.addTransaction({ text: textInput, amount: amountInput });
+    transactionContext.addTransaction({ text: textInput, amount: amountInput });
     clearText();
     clearAmount();
   };
-
-  const textInputStyleClass = !textInputIsValid && textIsBlur ? classes.invalid__text : classes.text__input;
-  const amountInputStyleClass = !amountInputIsValid && amountIsBlur ? classes.invalid__amount : classes.amount__input;
 
   return (
     <form onSubmit={submitHandler}>
@@ -48,38 +50,37 @@ const AddTransaction = () => {
         <h4>Add New Transaction</h4>
       </div>
       <div className={classes.text__container}>
-        <label htmlFor='text'>Text</label>
-        <input
-          className={textInputStyleClass}
-          value={textInput}
-          onChange={textChangeHandler}
-          onBlur={textBlurHandler}
+        <Label
+          hfor='text'
+          labelText='Text'
+        />
+        <Input
+          isValidInput={textInputIsValid}
+          inputIsBlur={textIsBlur}
+          inputValue={textInput}
+          changeHandler={textChangeHandler}
+          blurHandler={textBlurHandler}
           placeholder='Enter text...'
         />
-        {!textInputIsValid && textIsBlur &&
-          <p className={classes.validation}>Please enter a valid non-empty text.</p>
-        }
+        {!textInputIsValid && textIsBlur && <InputValidation />}
       </div>
       <div className={classes.tamount__container}>
-        <label htmlFor='amount'>Amount</label>
-        <div className={classes.label__description}>
-          (negative - expense, positive - income)
-        </div>
-        <input
-          className={amountInputStyleClass}
-          value={amountInput}
-          onChange={amountChangeHandler}
-          onBlur={amountBlurHandler}
+        <Label
+          hfor='amount'
+          labelText={'Amount'}
+          description='(negative - expense, positive - income)'
+        />
+        <Input
+          isValidInput={amountInputIsValid}
+          inputIsBlur={amountIsBlur}
+          inputValue={amountInput}
+          changeHandler={amountChangeHandler}
+          blurHandler={amountBlurHandler}
           placeholder='Enter amount...'
         />
-        {!amountInputIsValid && amountIsBlur &&
-          <p className={classes.validation}>Please enter valid amount (shouldn't be 0)</p>
-        }
+        {!amountInputIsValid && amountIsBlur && <InputValidation />}
       </div>
-      <button
-        className={isValidForm ? classes.transaction__button : classes.disabled__button}>
-        Add Transaction
-      </button>
+      <BaseButton isValidForm={isValidForm} text='Add Transaction' />
     </form>
   )
 };

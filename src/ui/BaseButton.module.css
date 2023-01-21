@@ -1,0 +1,31 @@
+.base__button {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: rgb(122, 51, 188);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 15px;
+  letter-spacing: 0.03cm;
+  transition: all 0.2s;
+}
+
+.base__button:hover,
+.base__button:active {
+  background-color: rgb(83, 31, 132);
+  cursor: pointer;
+}
+
+.disabled__button {
+  cursor:not-allowed;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: rgb(144 127 157);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 15px;
+  letter-spacing: 0.03cm;
+  transition: all 0.2s;
+  outline: none;
+}
