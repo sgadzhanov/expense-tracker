@@ -10,6 +10,7 @@ const Input = (props) => {
     placeholder
   } = props;
 
+  console.log(isValidInput)
   const styleClasses = !isValidInput && inputIsBlur ? classes.invalid__input : classes.myInput;
 
   return (

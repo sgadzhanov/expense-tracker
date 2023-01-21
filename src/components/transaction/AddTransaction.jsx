@@ -9,6 +9,14 @@ import BaseButton from '../../ui/BaseButton';
 
 import classes from './AddTransaction.module.css';
 
+const validateAmount = (amount) => {
+  const number = +amount;
+  if (!number) {
+    return false
+  }
+  return number !== 0
+}
+
 const AddTransaction = () => {
   const {
     enteredInput: textInput,
@@ -26,7 +34,7 @@ const AddTransaction = () => {
     inputChangeHandler: amountChangeHandler,
     inputBlurHandler: amountBlurHandler,
     clearInput: clearAmount,
-  } = useTransaction((amount) => amount.trim().length > 0 && +amount !== 0);
+  } = useTransaction((amount) => validateAmount(amount));
 
   const isValidForm = textInputIsValid && amountInputIsValid;
 
@@ -36,7 +44,7 @@ const AddTransaction = () => {
     e.preventDefault();
 
     if (!isValidForm) {
-      return
+      throw new Error('invalid form')
     }
 
     transactionContext.addTransaction({ text: textInput, amount: amountInput });
@@ -62,7 +70,9 @@ const AddTransaction = () => {
           blurHandler={textBlurHandler}
           placeholder='Enter text...'
         />
-        {!textInputIsValid && textIsBlur && <InputValidation />}
+        {!textInputIsValid && textIsBlur &&
+          <InputValidation message='Please enter valid name' />
+        }
       </div>
       <div className={classes.tamount__container}>
         <Label
@@ -78,7 +88,9 @@ const AddTransaction = () => {
           blurHandler={amountBlurHandler}
           placeholder='Enter amount...'
         />
-        {!amountInputIsValid && amountIsBlur && <InputValidation />}
+        {!amountInputIsValid && amountIsBlur &&
+          <InputValidation message="Please enter valid amount (shouldn't be 0)" />
+        }
       </div>
       <BaseButton isValidForm={isValidForm} text='Add Transaction' />
     </form>
