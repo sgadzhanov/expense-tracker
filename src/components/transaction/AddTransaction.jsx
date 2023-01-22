@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useTransaction } from '../../assets/hooks/useTransaction';
 import { CartContext } from '../../context/cart-context';
 
@@ -9,6 +9,8 @@ import BaseButton from '../../ui/BaseButton';
 
 import classes from './AddTransaction.module.css';
 
+const INVALID_FORM_VALIDATION_MESSAGE = 'Please enter valid text and/or amount.';
+
 const validateAmount = (amount) => {
   const number = +amount;
   if (!number) {
@@ -18,6 +20,8 @@ const validateAmount = (amount) => {
 }
 
 const AddTransaction = () => {
+  const [formValidaiton, setFormValidation] = useState('');
+
   const {
     enteredInput: textInput,
     inputIsBlur: textIsBlur,
@@ -44,7 +48,8 @@ const AddTransaction = () => {
     e.preventDefault();
 
     if (!isValidForm) {
-      throw new Error('invalid form')
+      setFormValidation(INVALID_FORM_VALIDATION_MESSAGE);
+      return;
     }
 
     transactionContext.addTransaction({ text: textInput, amount: amountInput });
@@ -93,6 +98,10 @@ const AddTransaction = () => {
         }
       </div>
       <BaseButton isValidForm={isValidForm} text='Add Transaction' />
+      {/* {formValidaiton && !isValidForm && <p>{formValidaiton}</p>} */}
+      {formValidaiton && !isValidForm &&
+        <InputValidation message={INVALID_FORM_VALIDATION_MESSAGE} />}
+
     </form>
   )
 };

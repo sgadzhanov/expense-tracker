@@ -21,9 +21,4 @@ function App() {
   );
 }
 
-export default App
-
-//todo: 
-// 1) delete transaction from history
-// 2) add validation and better UX to the form
-// 3) deploy
+export default App;
