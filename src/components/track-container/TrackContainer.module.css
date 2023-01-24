@@ -28,3 +28,7 @@
 .p__track_sum2 {
   color: rgb(223 55 55);
 }
+
+.vertical__line {
+  border-left: 1px solid #999999;
+}

@@ -1,13 +1,14 @@
 .base__button {
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.75rem 0.5rem;
   background-color: rgb(122, 51, 188);
   color: white;
   border: none;
   border-radius: 3px;
-  font-size: 15px;
+  font-size: 13px;
   letter-spacing: 0.03cm;
   transition: all 0.2s;
+  font-weight: bold;
 }
 
 .base__button:hover,
@@ -19,12 +20,12 @@
 .disabled__button {
   cursor:not-allowed;
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.75rem 0.5rem;
   background-color: rgb(83, 31, 132, 0.4);
   color: white;
   border: none;
   border-radius: 3px;
-  font-size: 15px;
+  font-size: 13px;
   letter-spacing: 0.03cm;
   transition: all 0.2s;
   outline: none;

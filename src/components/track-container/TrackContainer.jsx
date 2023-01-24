@@ -15,6 +15,7 @@ const TrackContainer = () => {
         <p className={classes.p__track}>INCOME</p>
         <div className={classes.p__track_sum1}>${totalIncome}</div>
       </div>
+      <div className={classes.vertical__line} />
       <div>
         <p className={classes.p__track}>EXPENSE</p>
         <div className={classes.p__track_sum2}>${totalExpenses}</div>

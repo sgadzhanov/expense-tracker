@@ -97,8 +97,7 @@ const AddTransaction = () => {
           <InputValidation message="Please enter valid amount (shouldn't be 0)" />
         }
       </div>
-      <BaseButton isValidForm={isValidForm} text='Add Transaction' />
-      {/* {formValidaiton && !isValidForm && <p>{formValidaiton}</p>} */}
+      <BaseButton isValidForm={isValidForm} text='ADD TRANSACTION' />
       {formValidaiton && !isValidForm &&
         <InputValidation message={INVALID_FORM_VALIDATION_MESSAGE} />}
 

@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
-body {
+* {
   font-family: 'Raleway', sans-serif;
+}
+
+body {
   margin: 2rem auto;
+  font-family: 'Raleway', sans-serif;
   box-sizing: border-box;
   background-color: #b9b9b9;
   max-width: 25rem;
