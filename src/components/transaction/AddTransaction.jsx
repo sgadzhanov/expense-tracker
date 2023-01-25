@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { useTransaction } from '../../assets/hooks/useTransaction';
+import { useTransaction } from '../../hooks/useTransaction';
 import { CartContext } from '../../context/cart-context';
 
 import Input from './Input';
